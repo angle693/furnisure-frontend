@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
-      const res = await fetch('/api/quotations', {
+      // ✅ POINTS TO RENDER BACKEND (NOT Vercel)
+      const res = await fetch('https://furnisure-quotation-app.onrender.com/api/quotations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -89,13 +90,14 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('❌ ' + (err.error || 'Failed'));
       }
     } catch (err) {
-      alert('❌ Network error');
+      alert('❌ Network error — check backend URL');
     }
   };
 
   async function loadRecords() {
     try {
-      const res = await fetch('/api/quotations');
+      // ✅ POINTS TO RENDER BACKEND (NOT Vercel)
+      const res = await fetch('https://furnisure-quotation-app.onrender.com/api/quotations');
       const records = await res.json();
       const tbody = document.getElementById('records-body');
       const count = document.getElementById('total-count');
@@ -114,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `).join('');
     } catch (err) {
       console.error(err);
+      alert('❌ Failed to load records — check backend URL');
     }
   }
 
