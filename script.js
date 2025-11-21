@@ -49,11 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
       clientContact: document.getElementById('clientContact').value,
       items,
       discount: parseFloat(document.getElementById('discount').value) || 0,
-      advance: parseFloat(document.getElementById('advance').value) || 0
+      advance: parseFloat(document.getElementById('advance').value) || 0,
+      applyGst: document.getElementById('applyGst').checked // ✅ GST FLAG
     };
 
     try {
-      // ✅ POINTS TO RENDER BACKEND (NOT Vercel)
+      // ✅ POINTS TO RENDER BACKEND
       const res = await fetch('https://furnisure-quotation-app.onrender.com/api/quotations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -96,7 +97,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function loadRecords() {
     try {
-      // ✅ POINTS TO RENDER BACKEND (NOT Vercel)
       const res = await fetch('https://furnisure-quotation-app.onrender.com/api/quotations');
       const records = await res.json();
       const tbody = document.getElementById('records-body');
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
       `).join('');
     } catch (err) {
       console.error(err);
-      alert('❌ Failed to load records — check backend URL');
+      alert('❌ Failed to load records');
     }
   }
 
