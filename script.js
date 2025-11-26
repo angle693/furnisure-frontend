@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
       items,
       discount: parseFloat(document.getElementById('discount').value) || 0,
       advance: parseFloat(document.getElementById('advance').value) || 0,
-      applyGst: document.getElementById('applyGst').checked // ✅ GST FLAG
+      // applyGst: document.getElementById('applyGst').checked // ✅ GST FLAG
     };
 
     try {
